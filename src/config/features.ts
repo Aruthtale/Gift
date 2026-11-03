@@ -41,6 +41,8 @@ export const features = {
   letterMeta: false,
   /** Label "THE HEART OF THIS LITTLE WORLD" di atas kado */
   finaleEyebrow: false,
+  /** Tombol + kotak rahasia "Starlight Time Capsule" di akhir */
+  finaleCapsule: false,
   /** Baris kecil "A Little World For You • Interactive Digital Keepsake" di footer */
   footerTagline: false,
 } as const;

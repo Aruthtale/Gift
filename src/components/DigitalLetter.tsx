@@ -6,6 +6,24 @@ import { features } from '../config/features';
 import { useWorld } from '../context/WorldContext';
 import { soundEngine } from '../utils/soundEngine';
 
+/** Ubah **teks** jadi tulisan tangan tebal; sisanya teks biasa. */
+const renderBold = (text: string) =>
+  text
+    .split(/(\*\*[^*]+\*\*)/g)
+    .filter(Boolean)
+    .map((chunk, i) =>
+      chunk.startsWith('**') && chunk.endsWith('**') ? (
+        <strong
+          key={i}
+          className="font-handwriting text-xl sm:text-2xl font-semibold text-[#B66674]"
+        >
+          {chunk.slice(2, -2)}
+        </strong>
+      ) : (
+        <React.Fragment key={i}>{chunk}</React.Fragment>
+      )
+    );
+
 export const DigitalLetter: React.FC = () => {
   const { letterOpened, markLetterOpened, senderName, recipientName, unlockEasterEgg } = useWorld();
   const [isUnfolded, setIsUnfolded] = useState(letterOpened);
@@ -14,6 +32,10 @@ export const DigitalLetter: React.FC = () => {
   );
 
   const names = { sender: senderName, recipient: recipientName };
+  const postscriptParagraphs = (Array.isArray(giftConfig.letter.postscript)
+    ? giftConfig.letter.postscript
+    : [String(giftConfig.letter.postscript)]
+  ).map((line) => fillText(line, names));
 
   useEffect(() => {
     if (!letterOpened) {
@@ -194,10 +216,17 @@ export const DigitalLetter: React.FC = () => {
                   {fillText(giftConfig.letter.signature, names)}
                 </p>
 
-                <div className="mt-6 rounded-2xl border border-[#F4D88B]/60 bg-[#FFF9F3] p-4">
-                  <p className="font-handwriting text-xl sm:text-2xl text-[#D98F9B]">
-                    {giftConfig.letter.postscript}
-                  </p>
+                <div className="mt-6 rounded-2xl border border-[#F4D88B]/60 bg-[#FFF9F3] p-5 sm:p-7 text-left">
+                  <div className="space-y-3.5">
+                    {postscriptParagraphs.map((line, idx) => (
+                      <p
+                        key={idx}
+                        className="font-serif-display text-sm sm:text-base leading-relaxed text-[#392D40]/90"
+                      >
+                        {renderBold(line)}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
 

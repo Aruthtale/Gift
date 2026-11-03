@@ -706,7 +706,16 @@ export const giftConfig = {
       "Tucked inside the margin of this letter so it stays blooming between our pages forever.",
     signOff: "Forever in your corner,",
     signature: "{sender} ♡", // nama penanda tangan di bawah surat
-    postscript: "P.S. Look up from your screen for a second—someone is ridiculously in love with you."
+    // P.S. — satu baris = satu paragraf. Teks di antara **dua bintang** jadi tulisan tangan tebal.
+    postscript: [
+      "**Will you be my lover, my prettiest? ♡**",
+      "Aku nggak pernah bermaksud buat maksa kamu jawab sekarang. You can take all the time you need, and you can give me your answer whenever you're ready.",
+      "Aku cuma pengen kamu ngerasa nyaman ketika sama aku. Aku pengen kamu bisa jadi diri kamu sendiri, cerita apa pun yang kamu mau, bercanda sebebas kamu, dan berinteraksi sama aku tanpa harus merasa terbebani oleh apa pun.",
+      "I don't want you to feel like you have to be someone else just to make me happy. I want you to feel safe enough to be yourself around me.",
+      "Your feelings matter to me, and so does your comfort. Jadi, please don't feel pressured to give me an answer just because you think that's what I want to hear.",
+      "Whatever your answer may be, I hope you know that I genuinely want what's best for you.",
+      "**Take your time, my prettiest. I'll be happy to hear your answer whenever you're ready. ♡**"
+    ]
   },
 
   // ── BAGIAN 3: KADO TERAKHIR ("Before You Go, ...") ────────────────────────

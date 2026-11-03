@@ -238,7 +238,8 @@ export const FinalSurprise: React.FC = () => {
               </motion.div>
 
               {/* Conditional Secret Button (Unlocked when the games chapter is off, all mini-games are completed, or discovery >= 70%) */}
-              {(!features.games || allGamesCompleted || discoveryPercentage >= 70) && (
+              {features.finaleCapsule &&
+                (!features.games || allGamesCompleted || discoveryPercentage >= 70) && (
                 <div className="mt-8">
                   <button
                     type="button"
